@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('state', 1)->default(0);
-            $table->foreignId('empid')->constrained('employee', 'id');
+            $table->foreignId('empid')->constrained('employees', 'id');
             $table->timestamp('date')->useCurrent();
         });
     }

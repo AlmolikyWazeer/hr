@@ -16,7 +16,7 @@ return new class extends Migration
             $table->mediumInteger('amount');
             $table->string('type');
             // $table->date('date')->default($table->timestamps());
-            $table->foreignId('empid')->constrained('employee', 'id');
+            $table->foreignId('empid')->constrained('employees', 'id');
             $table->tinyInteger('state', 1)->default(0);
             $table->timestamp('date')->useCurrent();
         });

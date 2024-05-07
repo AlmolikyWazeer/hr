@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('phone', 150);
             $table->string('salary', 50);
             $table->tinyInteger('state', 1)->default(1);
-            $table->foreignId('departid')->constrained('department', 'id');
+            $table->foreignId('departid')->constrained('departments', 'id');
             $table->timestamps();
         });
     }

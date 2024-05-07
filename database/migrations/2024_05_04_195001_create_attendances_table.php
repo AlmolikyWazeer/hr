@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('checkin');
             $table->string('checkout');
-            $table->foreignId('empid')->constrained('employee', 'id');
+            $table->foreignId('empid')->constrained('employees', 'id');
             $table->tinyInteger('state', 1)->default(1);
             $table->timestamp('date')->useCurrent();
         });
