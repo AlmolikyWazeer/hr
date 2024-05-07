@@ -38,17 +38,7 @@ class DepartmentController extends Controller
         return redirect()->route('departments.department')->with('Add', 'تم الحفــظ بنجــاح');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Department $department)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         $department =  Department::findorFail();
@@ -58,22 +48,22 @@ class DepartmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $department =  Department::findorFail($id);
+        $department =  Department::findorFail($request->id);
         $request->validate([
             'name' => 'required',
         ]);
-        $department->update(['name' => $request->name,]);
+        $department->update(['name' => $request->name]);
         return redirect()->route('departments.department')->with('update', 'تم التعديــل بنجــاح');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Department::findorFail($id)->delete();
+        Department::findorFail($request->id)->delete();
         return redirect()->route('department.department')->with('delete', 'تم الحــذف بنجــاح');
     }
 }
