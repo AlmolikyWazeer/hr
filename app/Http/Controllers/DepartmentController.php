@@ -13,7 +13,7 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::all();
-        return view('departments.index', compact('departments'));
+        return view('departments.department', compact('departments'));
     }
 
     /**
@@ -21,7 +21,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('departments.create'); //
+        return view('departments.department'); //
     }
 
     /**
@@ -35,7 +35,7 @@ class DepartmentController extends Controller
         $department = Department::create([
             'name' => $request->name,
         ]);
-        return redirect()->route('departments.index')->with('success', 'تم الحفــظ بنجــاح');
+        return redirect()->route('departments.department')->with('Add', 'تم الحفــظ بنجــاح');
     }
 
     /**
@@ -52,7 +52,7 @@ class DepartmentController extends Controller
     public function edit($id)
     {
         $department =  Department::findorFail();
-        return view('departments.edit', compact('department'));
+        return view('departments.department', compact('department'));
     }
 
     /**
@@ -65,7 +65,7 @@ class DepartmentController extends Controller
             'name' => 'required',
         ]);
         $department->update(['name' => $request->name,]);
-        return redirect()->route('departments.index')->with('success', 'تم التعديــل بنجــاح');
+        return redirect()->route('departments.department')->with('update', 'تم التعديــل بنجــاح');
     }
 
     /**
@@ -74,6 +74,6 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         Department::findorFail($id)->delete();
-        return redirect()->route('department.index')->with('success', 'تم الحــذف بنجــاح');
+        return redirect()->route('department.department')->with('delete', 'تم الحــذف بنجــاح');
     }
 }
